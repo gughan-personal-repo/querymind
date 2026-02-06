@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sidebar-bg: #1e296b;
+  --sidebar-text: #ffffff;
+  --accent-primary: #3b82f6;
+  --accent-gold: #f59e0b;
+  --background: #f8f9fc;
+  --card-yellow: #fffbeb;
+  --card-yellow-border: #fef3c7;
+  --card-blue: #eff6ff;
+  --card-blue-border: #dbeafe;
+  --text-primary: #1a1f36;
+  --text-muted: #64748b;
+  --font-sans: "SF Pro", "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Söhne Mono", "SF Mono", "Menlo", "Monaco", "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", ui-monospace, monospace;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 12pt;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code,
+pre,
+kbd,
+samp,
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+
+/* Layout utilities */
+.sidebar {
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+}
+
+.bg-background {
+  background: var(--background);
+}
+
+/* Card styles */
+.dashboard-card {
+  @apply rounded-3xl p-6 cursor-pointer transition-all duration-300 border-2 shadow-sm hover:shadow-lg hover:-translate-y-1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dashboard-card.bg-card-yellow {
+  background: var(--card-yellow);
+  border-color: transparent;
+}
+
+.dashboard-card.bg-card-yellow:hover {
+  border-color: var(--accent-gold);
+}
+
+.dashboard-card.bg-card-blue {
+  background: var(--card-blue);
+  border-color: transparent;
+}
+
+.dashboard-card.bg-card-blue:hover {
+  border-color: var(--accent-primary);
+}
+
+/* Shadow utilities */
+.shadow-soft {
+  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.06),
+    0 2px 8px -2px rgba(0, 0, 0, 0.04);
+}
+
+.input-text {
+  font-family: var(--font-sans);
+  font-size: 12pt;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.shadow-elevated {
+  box-shadow: 0 12px 48px -12px rgba(0, 0, 0, 0.12),
+    0 8px 24px -8px rgba(0, 0, 0, 0.08);
+}
+
+/* Animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+@keyframes pulse-soft {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+@keyframes typing-dot {
+
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(-4px);
+  }
+}
+
+.typing-indicator span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  margin: 0 2px;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation: typing-dot 1.4s ease-in-out infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation: typing-dot 1.4s ease-in-out 0.2s infinite;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation: typing-dot 1.4s ease-in-out 0.4s infinite;
+}
+
+/* Chat message bubbles */
+.message-bubble-user {
+  @apply bg-[#1e296b] text-white rounded-3xl rounded-br-lg px-6 py-4;
+}
+
+.message-bubble-assistant {
+  @apply bg-white border border-black/5 text-[#1a1f36] rounded-3xl rounded-bl-lg px-6 py-4 shadow-soft;
+}
+
+/* Focus styles */
+.input-focus-ring:focus {
+  @apply ring-2 ring-[#1e296b]/20 outline-none;
+}
+
+/* Glass effect */
+.glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* No scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
